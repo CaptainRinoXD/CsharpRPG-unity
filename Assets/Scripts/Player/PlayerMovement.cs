@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator MyAnimator;
     private BoxCollider2D MyBoxCollider2D;
     private float getHorizontalInput;
+    private int jumpCount = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +28,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(isOnWall());
+        //print(isOnWall());
+        
     }
 
     private void FixedUpdate()
@@ -64,6 +66,8 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKey(KeyCode.Space))
             {
                 Jump();
+                if(isOnWall())
+                jumpCount++;
             }
         } else { WallJumpCoolDown += Time.deltaTime; }
     }
@@ -75,18 +79,25 @@ public class PlayerMovement : MonoBehaviour
             MyRBody.velocity = new Vector2(MyRBody.velocity.x, jumpPower);
             isGrounded();
             MyAnimator.SetTrigger("jump");
+            jumpCount = 0;
         } else if(!isGrounded() && isOnWall()) 
         {
             if(getHorizontalInput == 0)
             {
-                MyRBody.velocity = new Vector2(-(transform.localScale.x) * 1, 0);
+                MyRBody.velocity = new Vector2(-(transform.localScale.x) * 3, 1);
                 // -Mathf.Sign(transform.localScale.x)
                 // Sign gonna give 1 or -1 base on transform.localScale.x
                 // if transform.localScale.x gave an negative value then be -1 and vice versa
                 transform.localScale = new Vector3(-(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-            } else { MyRBody.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 1, 2); }
+            } else 
+            { 
+                if (jumpCount < 2)
+                {
+                    MyRBody.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 1, 2);
+                }
+                
+            }
             WallJumpCoolDown = 0;
-
         }
  
     }
@@ -107,5 +118,11 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit2D rayCastHit = Physics2D.BoxCast(MyBoxCollider2D.bounds.center, MyBoxCollider2D.bounds.size, 0, new Vector2(transform.localScale.x,0), 0.1f, wallLayer);
         // Need more information Vector2(transform.localScale.x,0)
         return rayCastHit.collider != null; // if rayCasetHit is not collieded with ground layer then return false, vice versa
+        
+    }
+
+    public bool canAttack()
+    {
+        return getHorizontalInput == 0 && isGrounded() && !isOnWall();
     }
 }
