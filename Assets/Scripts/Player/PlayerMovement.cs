@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer; //Getting the layer call groundLayer
     [SerializeField] private LayerMask wallLayer;
     [SerializeField] private float WallJumpCoolDown;
+    private float delay; //delay when the player isOnWall() method action too quick making the player haven't touch the wall but velocity allready set to 00
     private Rigidbody2D MyRBody;
     private Animator MyAnimator;
     private BoxCollider2D MyBoxCollider2D;
@@ -51,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
         
         MyAnimator.SetBool("run", getHorizontalInput != 0); //Animation set value left and right
         MyAnimator.SetBool("grounded", isGrounded());  // Animtion set value for jump check if player is on the ground
+        
 
         if (WallJumpCoolDown > 0.2f)
         {
@@ -59,15 +61,19 @@ public class PlayerMovement : MonoBehaviour
 
             if (!isGrounded() && isOnWall()) //checking if player is not on the ground and on the wall
             {
+                
+                delay += Time.deltaTime;
+                //if(delay > 0.1f) { }
                 MyRBody.gravityScale = 0.2f;
-                MyRBody.velocity = Vector2.zero;
-            } else { MyRBody.gravityScale = 0.5f; }
+                MyRBody.velocity = new Vector2(0, 0);
+            } else { MyRBody.gravityScale = 0.5f; /*delay = 0;*/ }
 
             if (Input.GetKey(KeyCode.Space))
             {
                 Jump();
                 if(isOnWall())
                 jumpCount++;
+                
             }
         } else { WallJumpCoolDown += Time.deltaTime; }
     }
@@ -80,11 +86,12 @@ public class PlayerMovement : MonoBehaviour
             isGrounded();
             MyAnimator.SetTrigger("jump");
             jumpCount = 0;
-        } else if(!isGrounded() && isOnWall()) 
+        } 
+        else if(!isGrounded() && isOnWall()) 
         {
             if(getHorizontalInput == 0)
             {
-                MyRBody.velocity = new Vector2(-(transform.localScale.x) * 3, 1);
+                MyRBody.velocity = new Vector2(-(transform.localScale.x) * 2, 1.5f);
                 // -Mathf.Sign(transform.localScale.x)
                 // Sign gonna give 1 or -1 base on transform.localScale.x
                 // if transform.localScale.x gave an negative value then be -1 and vice versa
@@ -93,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
             { 
                 if (jumpCount < 2)
                 {
-                    MyRBody.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 1, 2);
+                    MyRBody.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 0.5f, 2);
                 }
                 
             }
@@ -115,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isOnWall()
     {
-        RaycastHit2D rayCastHit = Physics2D.BoxCast(MyBoxCollider2D.bounds.center, MyBoxCollider2D.bounds.size, 0, new Vector2(transform.localScale.x,0), 0.1f, wallLayer);
+        RaycastHit2D rayCastHit = Physics2D.BoxCast(MyBoxCollider2D.bounds.center, MyBoxCollider2D.bounds.size, 0, new Vector2(transform.localScale.x,0), 0.035f, wallLayer);
         // Need more information Vector2(transform.localScale.x,0)
         return rayCastHit.collider != null; // if rayCasetHit is not collieded with ground layer then return false, vice versa
         
