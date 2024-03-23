@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    public void FixedUpdate()
+    private void FixedUpdate()
     {
         getHorizontalInput = Input.GetAxisRaw("Horizontal");
         // MyRBody.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
