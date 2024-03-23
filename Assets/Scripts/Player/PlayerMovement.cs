@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    private void FixedUpdate()
+    public void FixedUpdate()
     {
         getHorizontalInput = Input.GetAxisRaw("Horizontal");
         // MyRBody.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
@@ -83,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
         } else { WallJumpCoolDown += Time.deltaTime; }
     }
 
-    private void Jump()
+    public void Jump()
     {
         if(isGrounded())
         {
