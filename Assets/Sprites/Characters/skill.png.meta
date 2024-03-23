@@ -155,6 +155,15 @@ TextureImporter:
   - first:
       213: -6149261721731220041
     second: skill_50
+  - first:
+      213: -1668713751366409468
+    second: skill_51
+  - first:
+      213: -8436165278412117611
+    second: skill_52
+  - first:
+      213: -8191615052464628659
+    second: skill_53
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -1088,8 +1097,8 @@ TextureImporter:
       name: skill_40
       rect:
         serializedVersion: 2
-        x: 0
-        y: 96
+        x: 192
+        y: 144
         width: 48
         height: 48
       alignment: 0
@@ -1109,8 +1118,8 @@ TextureImporter:
       name: skill_41
       rect:
         serializedVersion: 2
-        x: 48
-        y: 96
+        x: 240
+        y: 144
         width: 48
         height: 48
       alignment: 0
@@ -1130,7 +1139,7 @@ TextureImporter:
       name: skill_42
       rect:
         serializedVersion: 2
-        x: 96
+        x: 0
         y: 96
         width: 48
         height: 48
@@ -1151,7 +1160,7 @@ TextureImporter:
       name: skill_43
       rect:
         serializedVersion: 2
-        x: 144
+        x: 48
         y: 96
         width: 48
         height: 48
@@ -1172,8 +1181,8 @@ TextureImporter:
       name: skill_44
       rect:
         serializedVersion: 2
-        x: 0
-        y: 48
+        x: 96
+        y: 96
         width: 48
         height: 48
       alignment: 0
@@ -1193,8 +1202,8 @@ TextureImporter:
       name: skill_45
       rect:
         serializedVersion: 2
-        x: 48
-        y: 48
+        x: 144
+        y: 96
         width: 48
         height: 48
       alignment: 0
@@ -1214,8 +1223,8 @@ TextureImporter:
       name: skill_46
       rect:
         serializedVersion: 2
-        x: 96
-        y: 48
+        x: 192
+        y: 96
         width: 48
         height: 48
       alignment: 0
@@ -1235,7 +1244,7 @@ TextureImporter:
       name: skill_47
       rect:
         serializedVersion: 2
-        x: 144
+        x: 0
         y: 48
         width: 48
         height: 48
@@ -1256,8 +1265,8 @@ TextureImporter:
       name: skill_48
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 48
+        y: 48
         width: 48
         height: 48
       alignment: 0
@@ -1277,8 +1286,8 @@ TextureImporter:
       name: skill_49
       rect:
         serializedVersion: 2
-        x: 48
-        y: 0
+        x: 96
+        y: 48
         width: 48
         height: 48
       alignment: 0
@@ -1298,8 +1307,8 @@ TextureImporter:
       name: skill_50
       rect:
         serializedVersion: 2
-        x: 96
-        y: 0
+        x: 144
+        y: 48
         width: 48
         height: 48
       alignment: 0
@@ -1311,6 +1320,69 @@ TextureImporter:
       bones: []
       spriteID: 7bdbd455b0f69aaa0800000000000000
       internalID: -6149261721731220041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skill_51
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 403eef13fa987d8e0800000000000000
+      internalID: -1668713751366409468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skill_52
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 599e2c14068bcea80800000000000000
+      internalID: -8436165278412117611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skill_53
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4c5a15c289815e80800000000000000
+      internalID: -8191615052464628659
       vertices: []
       indices: 
       edges: []

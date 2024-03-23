@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 055ea8ec7a28ac44eaea963d0959d4db, type: 3}
-  m_Name: AtkBuff
+  m_Script: {fileID: 11500000, guid: a9b99d5fc75eb2c4e8b7813460386ec6, type: 3}
+  m_Name: JumpDeBuff
   m_EditorClassIdentifier: 
-  buff: -0.005
+  debuff: 4
