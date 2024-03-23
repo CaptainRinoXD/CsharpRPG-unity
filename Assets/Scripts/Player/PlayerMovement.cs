@@ -70,6 +70,11 @@ public class PlayerMovement : MonoBehaviour
 
             if (Input.GetKey(KeyCode.Space))
             {
+                if (isOnWall() && isGrounded()) // Fix problem when play is onground and stand next to wall
+                {
+                    return;
+                }
+                print("Space has been pressed");
                 Jump();
                 if(isOnWall())
                 jumpCount++;
