@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    [SerializeField] private float attackCoolDown;
+    [SerializeField] public float attackCoolDown;
     [SerializeField] private Transform flamePoint;
     [SerializeField] private GameObject[] flameBalls;
     private float coolDownTimer = Mathf.Infinity;

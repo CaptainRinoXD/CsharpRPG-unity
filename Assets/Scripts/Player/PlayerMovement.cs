@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 10f;  //same as public float moveSpeed = 10f; but safer
-    [SerializeField] private float jumpPower;
+    [SerializeField] public float moveSpeed = 10f;  //same as public float moveSpeed = 10f; but safer
+    [SerializeField] public float jumpPower;
     [SerializeField] private LayerMask groundLayer; //Getting the layer call groundLayer
     [SerializeField] private LayerMask wallLayer;
     [SerializeField] private float WallJumpCoolDown;
