@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:Assets/Animation.meta
 guid: f68ce22eb858d8345b797162c6aa632c
 folderAsset: yes
+=======
+guid: 4b51c0fdbbdff2341845d188d84e6f87
+>>>>>>> Stashed changes:Assets/Scenes/segg_ver2.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
