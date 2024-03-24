@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00dbbaf4a30a8db4ab75385069c35e98, type: 3}
   m_Name: SpeedDeBuff
   m_EditorClassIdentifier: 
-  debuff: 3
+  debuff: 1

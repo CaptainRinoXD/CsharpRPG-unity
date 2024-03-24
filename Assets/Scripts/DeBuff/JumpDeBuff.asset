@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9b99d5fc75eb2c4e8b7813460386ec6, type: 3}
   m_Name: JumpDeBuff
   m_EditorClassIdentifier: 
-  debuff: 4
+  debuff: 1
