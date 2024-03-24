@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfff1c5a5db53a44f85c473ba508c4a8, type: 3}
   m_Name: AtkDebuff
   m_EditorClassIdentifier: 
-  debuff: 1
+  debuff: -1
