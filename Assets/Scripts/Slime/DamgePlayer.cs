@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DamgePlayer : MonoBehaviour
 {
-    [SerializeField] float damageGiven;
+    [SerializeField] public float damageGiven;
     private bool isActive = true;
     private void Start()
     {
