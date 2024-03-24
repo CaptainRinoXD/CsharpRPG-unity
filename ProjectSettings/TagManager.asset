@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Ground
   - Wall
+  - Enemy
+  - DetectionZone
+  - InvisibleWall
   layers:
   - Default
   - TransparentFX
@@ -15,10 +18,10 @@ TagManager:
   - UI
   - Ground
   - Wall
+  - InvisibleWall
   - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
   - 
   - 
   - 

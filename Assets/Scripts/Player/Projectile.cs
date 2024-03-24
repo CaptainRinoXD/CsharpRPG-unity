@@ -10,6 +10,13 @@ public class Projectile : MonoBehaviour
     private float lifeTime;
     private bool isHit;
     private float direction;
+    [SerializeField] float damgeGivenToEnemy;
+
+
+    private void Start()
+    {
+        
+    }
     private void Awake()
     {
         MyBoxCollider2D = GetComponent<BoxCollider2D>();
@@ -17,7 +24,12 @@ public class Projectile : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if(isHit) { return; }
+        /*
+        GameObject DetectionZone = GameObject.FindGameObjectWithTag("DetectionZone");
+        Physics2D.IgnoreCollision(DetectionZone.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        */ //this code is usable but it only can find one gameObject making it obsoclet
+
+        if (isHit) { return; }
         float FlameBallMovement = fireBallSpeed * Time.deltaTime * direction;
         transform.Translate(FlameBallMovement,0,0);
 
@@ -25,16 +37,31 @@ public class Projectile : MonoBehaviour
         if (lifeTime > 5) 
             gameObject.SetActive(false);
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    
+    private void OnTriggerEnter2D(Collider2D collision) // ignore collison whenever is tounch new colider
     {
-        isHit = true;
-        MyBoxCollider2D.enabled = false;
-        myAnimator.SetTrigger("Explosion");
-        
+        if (collision.tag == "Enemy")
+        {
+            isHit = true;
+            collision.GetComponent<Health>().TakeDamage(damgeGivenToEnemy);
+            MyBoxCollider2D.enabled = false;
+            myAnimator.SetTrigger("Explosion"); // set trigger for explosion animmation
+        }
+        else if (collision.tag == "DetectionZone" || collision.tag == "InvisibleWall") //ingore out the collsion for dectionZone
+        {
+            //print("Collsion dectect"); //https://forum.unity.com/threads/ignore-collisions-by-tag-solved.60387/
+            if (collision.GetComponent<CircleCollider2D>() != null)
+                Physics2D.IgnoreCollision(collision.GetComponent<CircleCollider2D>(), GetComponent<BoxCollider2D>(), true);
+        } else
+        {
+            isHit = true;   //set is hit to true to return and cancle the sciprt (Look at fix update method)
+            MyBoxCollider2D.enabled = false;
+            myAnimator.SetTrigger("Explosion"); // set trigger for explosion animmation
+        }
     }
     public void setDirection(float _direction)
     {
+        
         lifeTime = 0;
         direction = _direction;
         gameObject.SetActive(true);

@@ -35,6 +35,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void FixedUpdate()
     {
+        
+
+
         getHorizontalInput = Input.GetAxisRaw("Horizontal");
         // MyRBody.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         // For vector y doesn't need to get input (or be changed) cause in this game we only go from left to right, 
@@ -116,8 +119,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //GameObject InvisibleWall = GameObject.FindGameObjectWithTag("InvisibleWall");
+        if (collision.gameObject.tag == "InvisibleWall")
+        {
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<BoxCollider2D>());
+            //Debug.LogError("DirectionZone is not initialized properly.")
+        }
     }
+
     
+
+
     private bool isGrounded()
     {
         RaycastHit2D rayCastHit = Physics2D.BoxCast(MyBoxCollider2D.bounds.center, MyBoxCollider2D.bounds.size,0, Vector2.down,0.1f, groundLayer);
