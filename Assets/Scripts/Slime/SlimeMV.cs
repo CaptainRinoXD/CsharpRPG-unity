@@ -45,8 +45,8 @@ public class SlimeMV : MonoBehaviour
         }
         else if (isOnInvisibleWall()  )
         {
-            moveSpeed = -moveSpeed;
-            MyRBody.velocity = new Vector2(moveSpeed, MyRBody.velocity.y);
+            //moveSpeed = -moveSpeed;
+            //MyRBody.velocity = new Vector2(moveSpeed, MyRBody.velocity.y);
         }
 
         if (Mathf.Sign(MyRBody.velocity.x) >= 0.01f)
