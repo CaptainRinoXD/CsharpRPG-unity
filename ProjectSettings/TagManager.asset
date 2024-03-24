@@ -9,7 +9,6 @@ TagManager:
   - Enemy
   - DetectionZone
   - InvisibleWall
-  - Key
   layers:
   - Default
   - TransparentFX
