@@ -24,6 +24,7 @@ public class Projectile : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        //https://discussions.unity.com/t/how-do-i-get-some-objects-to-ignore-collision-with-a-specific-object/102308/3
         /*
         GameObject DetectionZone = GameObject.FindGameObjectWithTag("DetectionZone");
         Physics2D.IgnoreCollision(DetectionZone.GetComponent<Collider2D>(), GetComponent<Collider2D>());
@@ -37,7 +38,7 @@ public class Projectile : MonoBehaviour
         if (lifeTime > 5) 
             gameObject.SetActive(false);
     }
-    
+
     private void OnTriggerEnter2D(Collider2D collision) // ignore collison whenever is tounch new colider
     {
         if (collision.tag == "Enemy")
@@ -47,7 +48,7 @@ public class Projectile : MonoBehaviour
             MyBoxCollider2D.enabled = false;
             myAnimator.SetTrigger("Explosion"); // set trigger for explosion animmation
         }
-        else if (collision.tag == "DetectionZone" || collision.tag == "InvisibleWall") //ingore out the collsion for dectionZone
+        else if (collision.tag == "DetectionZone" || collision.tag == "InvisibleWall" || collision.tag == "PlayerMeeleColi") //ingore out the collsion for dectionZone
         {
             //print("Collsion dectect"); //https://forum.unity.com/threads/ignore-collisions-by-tag-solved.60387/
             if (collision.GetComponent<CircleCollider2D>() != null)

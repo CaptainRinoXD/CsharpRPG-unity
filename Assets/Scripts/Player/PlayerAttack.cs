@@ -1,3 +1,4 @@
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections;
@@ -8,10 +9,17 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] public float attackCoolDown;
     [SerializeField] private Transform flamePoint;
     [SerializeField] private GameObject[] flameBalls;
+
+    [SerializeField] GameObject attackNearBoxCollider2D;
     private float coolDownTimer = Mathf.Infinity;
     private Animator MyAnimator;
     private PlayerMovement playerMovement;
 
+    private float attkNearCoolDown;
+    private void Start()
+    {
+        attackNearBoxCollider2D.GetComponent<BoxCollider2D>().enabled = false;
+    }
     private void Awake()
     {
         MyAnimator = GetComponent<Animator>();
@@ -19,14 +27,38 @@ public class PlayerAttack : MonoBehaviour
     }
     public void Update()
     {
-        if ((Input.GetMouseButton(0)||Input.GetButton("Fire1")) && coolDownTimer > attackCoolDown && playerMovement.canAttack())
+        if ((Input.GetMouseButton(0)||Input.GetButton("Fire1") || Input.GetKeyDown(KeyCode.L)) && coolDownTimer > attackCoolDown && playerMovement.canAttack())
         {
             Attack();
-            print("Key is being press");
+            print("Key flameBall is being press");
             
         }
+
+        if (Input.GetKeyDown(KeyCode.K) && coolDownTimer > attackCoolDown && playerMovement.canAttackNear())
+        {
+            AttackNear();
+            print("Key attacknear is being press");
+        }
+        attkNearCoolDown += Time.deltaTime;
         coolDownTimer += Time.deltaTime;
         //coolDownTimer = coolDownTimer + Time.deltaTime;
+
+        //print(attkNearCoolDown);
+        /*Lấy AttackNearCoolDown làm timer. Khi phương thức AttackNear() được gọi thì attackNearCoolDown = 0
+         * Cho đến khi nào attakNearCoolDown lớn hơn 1 thì mới thực hiện việc tắt. Nhược điểm của cách làm này so với
+         * IEnumerator là bặt buộc  phải cho điêu kiện vào trong FixUpdate Gây đến việc giảm hiệu quả. Còn nếu
+         * Sử dụng IEnumerator trong ngay phương thức AttackNear sẽ hiệu quả hơn.
+         */
+        if (attkNearCoolDown > 0.5f) 
+            attackNearBoxCollider2D.GetComponent<BoxCollider2D>().enabled = false;
+    }
+
+    private void AttackNear()
+    {
+        MyAnimator.SetTrigger("attackNear");
+        attkNearCoolDown = 0;
+        attackNearBoxCollider2D.GetComponent<BoxCollider2D>().enabled = true;
+        
     }
 
     public void Attack()

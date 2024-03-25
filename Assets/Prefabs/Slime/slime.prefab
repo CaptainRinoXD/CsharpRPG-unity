@@ -242,8 +242,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartingtHealth: 20
-  iFrameDuration: 1
-  numberOfFlash: 6
+  iFrameDuration: 0.5
+  numberOfFlash: 4
 --- !u!114 &2496520016645578749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d783d636a7b066d4c9825e169ca42225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.5
+  moveSpeed: 0.8
   directionZone: {fileID: 7373334623464277270}
   groundLayer:
     serializedVersion: 2

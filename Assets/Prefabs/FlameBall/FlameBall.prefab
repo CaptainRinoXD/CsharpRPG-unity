@@ -99,8 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireBallSpeed: 2
-  damgeGivenToEnemy: 2
-  directionZone: {fileID: 0}
+  damgeGivenToEnemy: 1
 --- !u!61 &6224653797291424601
 BoxCollider2D:
   m_ObjectHideFlags: 0

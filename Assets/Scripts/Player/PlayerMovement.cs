@@ -149,4 +149,9 @@ public class PlayerMovement : MonoBehaviour
     {
         return getHorizontalInput == 0 && isGrounded() && !isOnWall();
     }
+    
+    public bool canAttackNear()
+    {
+        return getHorizontalInput == 0;
+    }
 }
