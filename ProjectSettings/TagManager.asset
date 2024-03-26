@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - DetectionZone
   - InvisibleWall
+  - MeeleAttack
   layers:
   - Default
   - TransparentFX
