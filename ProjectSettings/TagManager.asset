@@ -10,6 +10,7 @@ TagManager:
   - DetectionZone
   - InvisibleWall
   - MeeleAttack
+  - Key
   layers:
   - Default
   - TransparentFX
