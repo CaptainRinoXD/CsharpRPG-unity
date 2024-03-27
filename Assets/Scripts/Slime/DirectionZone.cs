@@ -61,9 +61,9 @@ public class DirectionZone : MonoBehaviour
     private IEnumerator attackFarSpeed()
     {
         circleCollider.enabled = false;
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < GetComponentInParent<Sucu_Attack>().attackFarAmountPerShoot; i++)
         {
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(GetComponentInParent<Sucu_Attack>().attackFarSpacePerShoot);
             GetComponentInParent<Sucu_Attack>().Attack();
         }
         yield return new WaitForSeconds(GetComponentInParent<Sucu_Attack>().attackFarCoolDown);

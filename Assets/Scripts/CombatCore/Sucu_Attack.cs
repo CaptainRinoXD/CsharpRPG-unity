@@ -5,6 +5,8 @@ using UnityEngine;
 public class Sucu_Attack : MonoBehaviour
 {
     [SerializeField] public float attackFarCoolDown;
+    [SerializeField] public float attackFarAmountPerShoot;
+    [SerializeField] public float attackFarSpacePerShoot;
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject[] fireBalls;
 
