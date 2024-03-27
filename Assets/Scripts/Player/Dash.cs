@@ -8,10 +8,12 @@ public class Dash : MonoBehaviour
     [SerializeField] private float DashPower;
     private float DashCoolDownTimer = Mathf.Infinity;
     private Rigidbody2D MyRBody;
+    private SpriteRenderer myRenderer;
     // Start is called before the first frame update
     void Start()
     {
         MyRBody = GetComponent<Rigidbody2D>();
+        myRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -43,11 +45,13 @@ public class Dash : MonoBehaviour
     private IEnumerator Dash_Invunerablity(Vector2 Force)
     {
         Physics2D.IgnoreLayerCollision(10, 11, true);
+        myRenderer.color = new Color(0,1,0,0.8f);
         print(Force);
         MyRBody.velocity = Force;
         yield return new WaitForSeconds(0.2f);
         GetComponent<PlayerMovement>().enabled = true;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.5f);
+        myRenderer.color = Color.white;
         Physics2D.IgnoreLayerCollision(10, 11, false);
     }
 }
