@@ -8,7 +8,10 @@ public class BuffMenu : MonoBehaviour
 	
 	private void OnTriggerEnter2D(Collider2D collision) 
 	{
-		Destroy(gameObject);
-		buffeffect.Apply(collision.gameObject);
+		if (collision.tag == "Player")
+		{
+            Destroy(gameObject);
+            buffeffect.Apply(collision.gameObject);
+        }
 	}
 }
