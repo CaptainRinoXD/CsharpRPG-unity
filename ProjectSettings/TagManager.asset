@@ -12,6 +12,7 @@ TagManager:
   - MeeleAttack
   - FlameBall
   - buff
+  - Key
   layers:
   - Default
   - TransparentFX

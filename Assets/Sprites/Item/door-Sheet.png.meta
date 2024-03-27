@@ -1,28 +1,28 @@
 fileFormatVersion: 2
-guid: 08a212c3aa37919488b1a11d059b4b72
+guid: f3f2b3972ba1e524991022c7a8464b64
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 371912879725587802
-    second: Item_buff_debuff_0
+      213: 3025933663623405401
+    second: door-Sheet_0
   - first:
-      213: 720906402722430517
-    second: Item_buff_debuff_1
+      213: -2149891852205701994
+    second: door-Sheet_1
   - first:
-      213: -5281216130012198403
-    second: Item_buff_debuff_2
+      213: 4932875178546423848
+    second: door-Sheet_2
   - first:
-      213: -5054780684492251541
-    second: Item_buff_debuff_3
+      213: -5081249510026968961
+    second: door-Sheet_3
   - first:
-      213: 2094159425058201932
-    second: Item_buff_debuff_4
+      213: -7346188365499986852
+    second: door-Sheet_4
   - first:
-      213: 1878302984322839328
-    second: Item_buff_debuff_5
+      213: -7003193538573350098
+    second: door-Sheet_5
   - first:
-      213: 6190816151602801012
-    second: Item_buff_debuff_6
+      213: 8966305340383390004
+    second: door-Sheet_6
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Item_buff_debuff_0
+      name: door-Sheet_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 32
-        width: 11
-        height: 13
+        x: 8
+        y: 4
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,20 +127,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5daf6b2bcc492500800000000000000
-      internalID: 371912879725587802
+      spriteID: 95f5b2e82a64ef920800000000000000
+      internalID: 3025933663623405401
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Item_buff_debuff_1
+      name: door-Sheet_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
-        width: 16
-        height: 16
+        x: 60
+        y: 4
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -148,20 +148,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 53e3392cd8c210a00800000000000000
-      internalID: 720906402722430517
+      spriteID: 694c5c340cc0a22e0800000000000000
+      internalID: -2149891852205701994
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Item_buff_debuff_2
+      name: door-Sheet_2
       rect:
         serializedVersion: 2
-        x: 64
-        y: 32
-        width: 16
-        height: 16
+        x: 112
+        y: 4
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,20 +169,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df94f8c29e955b6b0800000000000000
-      internalID: -5281216130012198403
+      spriteID: 828e992e6d7157440800000000000000
+      internalID: 4932875178546423848
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Item_buff_debuff_3
+      name: door-Sheet_3
       rect:
         serializedVersion: 2
-        x: 16
-        y: 17
-        width: 16
-        height: 15
+        x: 164
+        y: 4
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,20 +190,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b6e5553bfbfc9d9b0800000000000000
-      internalID: -5054780684492251541
+      spriteID: f7007b30e76cb79b0800000000000000
+      internalID: -5081249510026968961
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Item_buff_debuff_4
+      name: door-Sheet_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 13
-        height: 16
+        x: 216
+        y: 4
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -211,20 +211,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4161a9d6e2ff0d10800000000000000
-      internalID: 2094159425058201932
+      spriteID: c5c04457a981d0a90800000000000000
+      internalID: -7346188365499986852
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Item_buff_debuff_5
+      name: door-Sheet_5
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
-        width: 16
-        height: 16
+        x: 268
+        y: 4
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -232,20 +232,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0237e11dc92111a10800000000000000
-      internalID: 1878302984322839328
+      spriteID: e2b4608c498afce90800000000000000
+      internalID: -7003193538573350098
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Item_buff_debuff_6
+      name: door-Sheet_6
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 16
-        height: 15
+        x: 320
+        y: 4
+        width: 32
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -253,8 +253,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 47929025d723ae550800000000000000
-      internalID: 6190816151602801012
+      spriteID: 4396d399337be6c70800000000000000
+      internalID: 8966305340383390004
       vertices: []
       indices: 
       edges: []
