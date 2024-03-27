@@ -66,6 +66,12 @@ public class Health : MonoBehaviour
                     //GetComponent<SlimeMV>().GetComponent<BoxCollider2D>().enabled = false;
                 }
 
+                //Sucubus
+                if(GetComponent<Sucu_mv>() != null)
+                {
+                    GetComponent<Sucu_mv>().enabled = false;
+                }
+
                 StartCoroutine(DeactivateAfterDelay(2f)); // delaying setActive false
             }
             

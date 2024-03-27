@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using UnityEngine;
 
-public class SlimeMV : MonoBehaviour
+public class Sucu_mv : MonoBehaviour
 {
     public float moveSpeed;
     [SerializeField] DirectionZone directionZone;
@@ -13,7 +12,7 @@ public class SlimeMV : MonoBehaviour
     private Animator myAnime;
     private BoxCollider2D MyBoxCollider2D;
     private Vector3 targetPosition; // Store the target position to move towards
-
+    private bool canShoot;
     private Health health;
 
     // Start is called before the first frame update
@@ -29,30 +28,44 @@ public class SlimeMV : MonoBehaviour
         {
             targetPosition = directionZone.GetdectectObjs()[0].transform.position;
         }
+        
     }
 
     // Update is called once per frame
     private void FixedUpdate()
     {
+        canShoot = false;
         if (directionZone.GetdectectObjs().Count > 0)
         {
             targetPosition = directionZone.GetdectectObjs()[0].transform.position;
         }
-
+        float Distance = Mathf.Abs(targetPosition.x - transform.position.x);
         Vector2 direction = (targetPosition - transform.position).normalized;
-        Vector2 Force = new Vector2(direction.x * moveSpeed, MyRBody.velocity.y);
 
-        // Apply movement force
-        MyRBody.velocity = Force;
+        if (Distance < 1)
+        {
+            Vector2 Force = new Vector2(direction.x * moveSpeed, MyRBody.velocity.y);
+            // Apply movement force
+            MyRBody.velocity = Force;
+        }
+
+        if(Distance >= 1)
+        {
+            Vector2 Force = new Vector2(direction.x * (moveSpeed/10), MyRBody.velocity.y);
+            // Apply movement force
+            MyRBody.velocity = Force;
+            canShoot = true;
+        }
+        print(canShoot);
 
         // Flip sprite based on movement direction
-        if (Mathf.Sign(MyRBody.velocity.x) >= 0.01f)
+        if (direction.x >= 0.01f)
             transform.localScale = Vector3.one;
-        if (Mathf.Sign(MyRBody.velocity.x) <= 0.01f)
+        if (direction.x <= 0.01f)
             transform.localScale = new Vector3(-1, 1, 1);
 
         // Set animator parameter
-        myAnime.SetBool("run", direction.x != 0);
+        myAnime.SetBool("run", directionZone.GetdectectObjs().Count > 0);
     }
 
     // KnockBack method
@@ -60,20 +73,26 @@ public class SlimeMV : MonoBehaviour
     {
         // Calculate knockback velocity
         Vector2 knockbackVelocity = new Vector2(_direction * knockBack, MyRBody.velocity.y);
-        GetComponent<SlimeMV>().enabled = false;
+        GetComponent<Sucu_mv>().enabled = false;
         StartCoroutine(DelayForKnockBack(knockbackVelocity));
-        
+
     }
-    private IEnumerator DelayForKnockBack(Vector2 Force) 
+    private IEnumerator DelayForKnockBack(Vector2 Force)
     {
         MyRBody.velocity = Force;
         yield return new WaitForSeconds(1);
         print("Coming back for player");
-        if ( health.currentHealth > 0 )
-            GetComponent<SlimeMV>().enabled = true;
+        if (health.currentHealth > 0)
+            GetComponent<Sucu_mv>().enabled = true;
     }
     /* Vì Fixupdate liên tục tìm vị trí của người chơi và di chuyển slime đến vị trí đến nên không thể dùng lệnh velocity khác để 
      * di chuyển slime được vì liên tục bị ghi đè. Như vậy bằng cách tạm thời tắt Fixupdate (tắt scpirt di chuyển) và chỉ cho phép 
      * method isbeing hit chạy (về cơ bản thì script khi bị tắt thì chỉ mỗi mình fixupdate và update bị tắt còn các method được tạo ra 
      * vẫn gọi được. Rồi sử dụng như trên để tạo delay bặt lại di chuyển với điều kiện slime có máu lớn hơn 0.*/
+
+
+    public bool CanShoot()
+    {
+        return canShoot;
+    }
 }

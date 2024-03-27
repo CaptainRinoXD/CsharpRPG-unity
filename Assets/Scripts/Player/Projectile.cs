@@ -11,6 +11,7 @@ public class Projectile : MonoBehaviour
     private bool isHit;
     private float direction;
     [SerializeField] float damgeGivenToEnemy;
+    [SerializeField] Camera myCamera;
 
 
     private void Start()
@@ -47,13 +48,26 @@ public class Projectile : MonoBehaviour
             collision.GetComponent<Health>().TakeDamage(damgeGivenToEnemy);
             MyBoxCollider2D.enabled = false;
             myAnimator.SetTrigger("Explosion"); // set trigger for explosion animmation
+            collision.GetComponentInChildren<CircleCollider2D>().radius = 3;
+            //myCamera.orthographicSize = 1f;
         }
-        else if (collision.tag == "DetectionZone" || collision.tag == "InvisibleWall" || collision.tag == "PlayerMeeleColi") //ingore out the collsion for dectionZone
+        else if (collision.tag == "Player")
+        {
+            isHit = true;
+            collision.GetComponent<Health>().TakeDamage(damgeGivenToEnemy);
+            MyBoxCollider2D.enabled = false;
+            myAnimator.SetTrigger("Explosion"); // set trigger for explosion animmation
+        }
+
+        else if (collision.tag == "DetectionZone" || collision.tag == "InvisibleWall" || collision.tag == "MeeleAttack" || collision.tag == "FlameBall") //ingore out the collsion for dectionZone
         {
             //print("Collsion dectect"); //https://forum.unity.com/threads/ignore-collisions-by-tag-solved.60387/
-            if (collision.GetComponent<CircleCollider2D>() != null)
-                Physics2D.IgnoreCollision(collision.GetComponent<CircleCollider2D>(), GetComponent<BoxCollider2D>(), true);
-        } else
+            if (collision.GetComponent<Collider2D>() != null)
+            {
+                Physics2D.IgnoreCollision(collision.GetComponent<Collider2D>(), GetComponent<BoxCollider2D>(), true);
+            }
+        } 
+        else
         {
             isHit = true;   //set is hit to true to return and cancle the sciprt (Look at fix update method)
             MyBoxCollider2D.enabled = false;

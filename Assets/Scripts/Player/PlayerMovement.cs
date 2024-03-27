@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer; //Getting the layer call groundLayer
     [SerializeField] private LayerMask wallLayer;
     [SerializeField] private float WallJumpCoolDown;
-    private float delay; //delay when the player isOnWall() method action too quick making the player haven't touch the wall but velocity allready set to 00
+
     private Rigidbody2D MyRBody;
     private Animator MyAnimator;
     private BoxCollider2D MyBoxCollider2D;
@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void FixedUpdate()
     {
-        
+
 
 
         getHorizontalInput = Input.GetAxisRaw("Horizontal");
@@ -57,6 +57,8 @@ public class PlayerMovement : MonoBehaviour
         MyAnimator.SetBool("grounded", isGrounded());  // Animtion set value for jump check if player is on the ground
         
 
+        
+
         if (WallJumpCoolDown > 0.2f)
         {
             MyRBody.velocity = new Vector2(getHorizontalInput * moveSpeed, MyRBody.velocity.y); 
@@ -65,7 +67,6 @@ public class PlayerMovement : MonoBehaviour
             if (!isGrounded() && isOnWall()) //checking if player is not on the ground and on the wall
             {
                 
-                delay += Time.deltaTime;
                 //if(delay > 0.1f) { }
                 MyRBody.gravityScale = 0.2f;
                 MyRBody.velocity = new Vector2(0, 0);
@@ -153,5 +154,22 @@ public class PlayerMovement : MonoBehaviour
     public bool canAttackNear()
     {
         return getHorizontalInput == 0;
+    }
+
+    // KnockBack method
+    public void isBeingHit(bool hit, float _direction, float knockBack)
+    {
+        // Calculate knockback velocity
+        Vector2 knockbackVelocity = new Vector2(_direction * knockBack, MyRBody.velocity.y);
+        GetComponent<PlayerMovement>().enabled = false;
+        StartCoroutine(DelayForKnockBack(knockbackVelocity));
+
+    }
+    private IEnumerator DelayForKnockBack(Vector2 Force)
+    {
+        MyRBody.velocity = Force;
+        yield return new WaitForSeconds(1);
+        if (GetComponent<Health>().currentHealth > 0)
+            GetComponent<PlayerMovement>().enabled = true;
     }
 }
