@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6224653797291424603}
   m_Layer: 0
   m_Name: FlameBall
-  m_TagString: Untagged
+  m_TagString: FlameBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b0c8a6f95b88cd44acb7f5ede646eff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireBallSpeed: 2
+  fireBallSpeed: 3
   damgeGivenToEnemy: 1
 --- !u!61 &6224653797291424601
 BoxCollider2D:
