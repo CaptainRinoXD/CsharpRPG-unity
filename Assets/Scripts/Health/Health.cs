@@ -6,8 +6,8 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [Header ("Health")]
-    [SerializeField] private float StartingtHealth;
-    public float currentHealth { get; private set; }
+    public float StartingtHealth = 5;
+    public float currentHealth;
     private Animator myAnim;
     private bool PlayerHasDie;
     private SpriteRenderer myRenderer;

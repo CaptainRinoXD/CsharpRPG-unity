@@ -42,14 +42,14 @@ public class Sucu_mv : MonoBehaviour
         float Distance = Mathf.Abs(targetPosition.x - transform.position.x);
         Vector2 direction = (targetPosition - transform.position).normalized;
 
-        if (Distance < 1.2)
+        if (Distance < 1.5)
         {
             Vector2 Force = new Vector2(direction.x * moveSpeed, MyRBody.velocity.y);
             // Apply movement force
             MyRBody.velocity = Force;
         }
 
-        if(Distance >= 1.2)
+        if(Distance >= 1.5)
         {
             Vector2 Force = new Vector2(direction.x * (moveSpeed/10), MyRBody.velocity.y);
             // Apply movement force
