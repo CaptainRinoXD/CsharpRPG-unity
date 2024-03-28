@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private BoxCollider2D MyBoxCollider2D;
     private float getHorizontalInput;
     private int jumpCount = 0;
-
+    private float onAir;
     // Start is called before the first frame update
     void Start()
     {
@@ -81,20 +81,32 @@ public class PlayerMovement : MonoBehaviour
                 print("Space has been pressed");
                 Jump();
                 if(isOnWall())
-                jumpCount++;
-                
+                {
+                    jumpCount++;
+                }
             }
         } else { WallJumpCoolDown += Time.deltaTime; }
     }
 
     public void Jump()
     {
-        if(isGrounded())
+        if (!isGrounded())
+        {
+            onAir += Time.deltaTime;
+            print(onAir);
+            if (onAir < 0.1f )
+            {
+                MyRBody.velocity = new Vector2(MyRBody.velocity.x, jumpPower);
+                MyAnimator.SetTrigger("jump");
+            }
+        }
+        if (isGrounded())
         {
             MyRBody.velocity = new Vector2(MyRBody.velocity.x, jumpPower);
             isGrounded();
             MyAnimator.SetTrigger("jump");
             jumpCount = 0;
+            onAir = 0;
         } 
         else if(!isGrounded() && isOnWall()) 
         {

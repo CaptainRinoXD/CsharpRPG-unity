@@ -31,7 +31,6 @@ public class DirectionZone : MonoBehaviour
             if (collision.GetComponent<BoxCollider2D>() != null)
             {
                 Physics2D.IgnoreCollision(collision.GetComponent<Collider2D>(), GetComponent<CircleCollider2D>(), true);
-                print("ingore");
             }
         }
 

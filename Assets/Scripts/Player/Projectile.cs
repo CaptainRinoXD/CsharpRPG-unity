@@ -11,7 +11,6 @@ public class Projectile : MonoBehaviour
     private bool isHit;
     private float direction;
     [SerializeField] float damgeGivenToEnemy;
-    [SerializeField] Camera myCamera;
 
 
     private void Start()
