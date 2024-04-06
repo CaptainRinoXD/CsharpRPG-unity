@@ -13,6 +13,7 @@ TagManager:
   - FlameBall
   - buff
   - Key
+  - Death
   layers:
   - Default
   - TransparentFX
