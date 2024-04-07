@@ -13,6 +13,7 @@ TagManager:
   - FlameBall
   - buff
   - Key
+  - Bonfire
   layers:
   - Default
   - TransparentFX
