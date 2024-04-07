@@ -6,7 +6,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [Header ("Health")]
-    public float StartingtHealth = 5;
+    public float StartingtHealth;
     public float currentHealth;
     private Animator myAnim;
     private bool PlayerHasDie;
