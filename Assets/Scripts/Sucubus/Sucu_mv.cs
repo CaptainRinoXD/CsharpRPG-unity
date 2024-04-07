@@ -32,7 +32,7 @@ public class Sucu_mv : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void FixedUpdate()
+    private void Update()
     {
         canShoot = false;
         if (directionZone.GetdectectObjs().Count > 0)
@@ -47,6 +47,10 @@ public class Sucu_mv : MonoBehaviour
             Vector2 Force = new Vector2(direction.x * moveSpeed, MyRBody.velocity.y);
             // Apply movement force
             MyRBody.velocity = Force;
+            if (Distance < 0.3f)
+            {
+                MyRBody.velocity = Vector2.zero;
+            }
         }
 
         if(Distance >= 1.5)
@@ -56,13 +60,18 @@ public class Sucu_mv : MonoBehaviour
             MyRBody.velocity = Force;
             canShoot = true;
         }
-        print(canShoot);
+        //print(canShoot); kiểm tra xem có kích hoạt tấn công từ xa
 
-        // Flip sprite based on movement direction
-        if (direction.x >= 0.01f)
-            transform.localScale = Vector3.one;
-        if (direction.x <= 0.01f)
-            transform.localScale = new Vector3(-1, 1, 1);
+        print(direction);
+        if (direction.x != 0)
+        {
+            // Flip sprite based on movement direction
+            if (Mathf.Sign(direction.x) >= 0.01f)
+                transform.localScale = Vector3.one;
+            if (Mathf.Sign(direction.x) <= 0.01f)
+                transform.localScale = new Vector3(-1, 1, 1);
+        }
+
 
         // Set animator parameter
         myAnime.SetBool("run", directionZone.GetdectectObjs().Count > 0);

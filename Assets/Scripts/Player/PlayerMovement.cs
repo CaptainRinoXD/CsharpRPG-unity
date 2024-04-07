@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private BoxCollider2D MyBoxCollider2D;
     private float getHorizontalInput;
     private int jumpCount = 0;
-    private float onAir;
+    private int doubleJump = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,13 +27,8 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        //print(isOnWall());
-        
-    }
 
-    public void FixedUpdate()
+    public void Update()
     {
 
 
@@ -72,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
                 MyRBody.velocity = new Vector2(0, 0);
             } else { MyRBody.gravityScale = 0.5f; /*delay = 0;*/ }
 
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 if (isOnWall() && isGrounded()) // Fix problem when play is onground and stand next to wall
                 {
@@ -90,15 +85,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
-        if (!isGrounded())
+        if (!isGrounded() && doubleJump < 1)
         {
-            onAir += Time.deltaTime;
-            print(onAir);
-            if (onAir < 0.1f )
-            {
-                MyRBody.velocity = new Vector2(MyRBody.velocity.x, jumpPower);
-                MyAnimator.SetTrigger("jump");
-            }
+            MyRBody.velocity = new Vector2(MyRBody.velocity.x, jumpPower);
+            doubleJump++;
         }
         if (isGrounded())
         {
@@ -106,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
             isGrounded();
             MyAnimator.SetTrigger("jump");
             jumpCount = 0;
-            onAir = 0;
+            doubleJump = 0;
         } 
         else if(!isGrounded() && isOnWall()) 
         {
