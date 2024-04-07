@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using static UnityEngine.InputSystem.LowLevel.InputStateHistory;
 
 public class Health : MonoBehaviour
 {
@@ -9,8 +11,12 @@ public class Health : MonoBehaviour
     public float StartingtHealth = 5;
     public float currentHealth;
     private Animator myAnim;
-    private bool PlayerHasDie;
+    public bool PlayerHasDie;
     private SpriteRenderer myRenderer;
+    //public GameObject player;
+    //public GameObject bonfire;
+    //public bool Reload;
+
 
     [Header("iFrame")]
     [SerializeField] private float iFrameDuration;
@@ -74,9 +80,25 @@ public class Health : MonoBehaviour
 
                 StartCoroutine(DeactivateAfterDelay(2f)); // delaying setActive false
             }
-            
+
+            //Respawn();
+            //player.transform.position = bonfire.transform.position;
         }
     }
+
+    //public void Respawn()
+    //{
+    //    if (PlayerHasDie == true)
+    //    {
+    //        Reload = true;
+    //        Scene currentScene = SceneManager.GetActiveScene();
+    //        SceneManager.LoadScene(currentScene.name);           
+    //    }
+    //    if (Reload == true)
+    //    {
+            
+    //    }
+    //}
 
     private IEnumerator Invunerablity() //use IEnumerator not IEnumerable
     {

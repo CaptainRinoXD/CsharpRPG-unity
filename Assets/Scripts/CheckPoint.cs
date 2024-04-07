@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Respawn : MonoBehaviour
+public class CheckPoint : MonoBehaviour
 {
-    public GameObject player;
-    public GameObject bonfire;
+    private Respawn respawn;
+
+    void Awake()
+    {
+        respawn = GameObject.FindGameObjectWithTag("Respawn").GetComponent<Respawn>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -20,10 +24,10 @@ public class Respawn : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player")) 
+        if (other.gameObject.CompareTag("Player"))
         {
-            player.transform.position = bonfire.transform.position;
+            respawn.bonfire = this.gameObject;
         }
-    }
 
+    }
 }

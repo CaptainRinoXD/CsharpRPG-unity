@@ -10,20 +10,24 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask wallLayer;
     [SerializeField] private float WallJumpCoolDown;
 
+
     private Rigidbody2D MyRBody;
     private Animator MyAnimator;
     private BoxCollider2D MyBoxCollider2D;
     private float getHorizontalInput;
     private int jumpCount = 0;
     private float onAir;
+    
     // Start is called before the first frame update
     void Start()
-    {
+    {   
+        
         MyRBody = GetComponent<Rigidbody2D>();
         // Get the Rigidbody2D componemet from object player.
 
         MyAnimator = GetComponent<Animator>();
         MyBoxCollider2D = GetComponent<BoxCollider2D>();
+       
     }
 
     // Update is called once per frame

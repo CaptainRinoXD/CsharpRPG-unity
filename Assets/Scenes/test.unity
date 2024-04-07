@@ -497,11 +497,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2652748761188327314, guid: 4ee6ba7cbf2d4554eb55f42b1099ad85, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.037
+      value: -1.81
       objectReference: {fileID: 0}
     - target: {fileID: 2652748761188327314, guid: 4ee6ba7cbf2d4554eb55f42b1099ad85, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.082
+      value: -0.12
       objectReference: {fileID: 0}
     - target: {fileID: 2652748761188327314, guid: 4ee6ba7cbf2d4554eb55f42b1099ad85, type: 3}
       propertyPath: m_LocalPosition.z
@@ -573,6 +573,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartingtHealth: 5
   currentHealth: 0
+  PlayerHasDie: 0
   iFrameDuration: 2
   numberOfFlash: 4
 --- !u!114 &139888693
@@ -803,8 +804,9 @@ GameObject:
   - component: {fileID: 302948450}
   - component: {fileID: 302948452}
   - component: {fileID: 302948451}
+  - component: {fileID: 302948453}
   m_Layer: 0
-  m_Name: bonfire
+  m_Name: bonfire1
   m_TagString: Respawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -818,11 +820,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 302948449}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.197, y: 1.279, z: 0.015397966}
+  m_LocalPosition: {x: -1.3209991, y: 0.0200001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1096112834}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &302948451
 BoxCollider2D:
@@ -901,6 +903,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &302948453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302948449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d15d229cfffd06f4aace4859d8ef466e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &350321814
 GameObject:
   m_ObjectHideFlags: 0
@@ -1060,6 +1074,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartingtHealth: 50
   currentHealth: 0
+  PlayerHasDie: 0
   iFrameDuration: 6
   numberOfFlash: 3
 --- !u!114 &371059195
@@ -4312,7 +4327,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &609449000
 PrefabInstance:
@@ -6238,39 +6253,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7b8feed63ee0074e9f882c5061e15e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1096112833
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1096112834}
-  m_Layer: 0
-  m_Name: BonFire
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1096112834
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1096112833}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.876, y: -1.259, z: -0.015397966}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 302948450}
-  - {fileID: 1864576281}
-  - {fileID: 1294573167}
-  m_Father: {fileID: 0}
-  m_RootOrder: 14
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1111235401
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7276,8 +7258,9 @@ GameObject:
   - component: {fileID: 1294573167}
   - component: {fileID: 1294573169}
   - component: {fileID: 1294573168}
+  - component: {fileID: 1294573170}
   m_Layer: 0
-  m_Name: bonfire (2)
+  m_Name: bonfire3
   m_TagString: Respawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7291,11 +7274,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1294573166}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.091, y: -0.166, z: 0.015397966}
+  m_LocalPosition: {x: 2.7850008, y: -1.425, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1096112834}
-  m_RootOrder: 2
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1294573168
 BoxCollider2D:
@@ -7374,6 +7357,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1294573170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294573166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d15d229cfffd06f4aace4859d8ef466e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1380638188
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17382,8 +17377,9 @@ GameObject:
   - component: {fileID: 1864576281}
   - component: {fileID: 1864576283}
   - component: {fileID: 1864576282}
+  - component: {fileID: 1864576284}
   m_Layer: 0
-  m_Name: bonfire (1)
+  m_Name: bonfire2
   m_TagString: Respawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17397,11 +17393,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1864576280}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.898, y: 1.116, z: 0.015397966}
+  m_LocalPosition: {x: 9.978001, y: -0.14299989, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1096112834}
-  m_RootOrder: 1
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1864576282
 BoxCollider2D:
@@ -17480,6 +17476,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1864576284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1864576280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d15d229cfffd06f4aace4859d8ef466e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1882506001
 GameObject:
   m_ObjectHideFlags: 0
