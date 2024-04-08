@@ -30,14 +30,14 @@ public class PlayerAttack : MonoBehaviour
         if ((Input.GetMouseButton(0)||Input.GetButton("Fire1") || Input.GetKeyDown(KeyCode.L)) && coolDownTimer > attackCoolDown && playerMovement.canAttack())
         {
             Attack();
-            print("Key flameBall is being press");
+            //print("Key flameBall is being press");
             
         }
 
         if (Input.GetKeyDown(KeyCode.K) && coolDownTimer > attackCoolDown && playerMovement.canAttackNear())
         {
             AttackNear();
-            print("Key attacknear is being press");
+            //print("Key attacknear is being press");
         }
         attkNearCoolDown += Time.deltaTime;
         coolDownTimer += Time.deltaTime;

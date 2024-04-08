@@ -62,7 +62,6 @@ public class Sucu_mv : MonoBehaviour
         }
         //print(canShoot); kiểm tra xem có kích hoạt tấn công từ xa
 
-        print(direction);
         if (direction.x != 0)
         {
             // Flip sprite based on movement direction
@@ -71,7 +70,6 @@ public class Sucu_mv : MonoBehaviour
             if (Mathf.Sign(direction.x) <= 0.01f)
                 transform.localScale = new Vector3(-1, 1, 1);
         }
-
 
         // Set animator parameter
         myAnime.SetBool("run", directionZone.GetdectectObjs().Count > 0);
@@ -84,13 +82,12 @@ public class Sucu_mv : MonoBehaviour
         Vector2 knockbackVelocity = new Vector2(_direction * knockBack, MyRBody.velocity.y);
         GetComponent<Sucu_mv>().enabled = false;
         StartCoroutine(DelayForKnockBack(knockbackVelocity));
-
     }
     private IEnumerator DelayForKnockBack(Vector2 Force)
     {
         MyRBody.velocity = Force;
         yield return new WaitForSeconds(1);
-        print("Coming back for player");
+        //print("Coming back for player");
         if (health.currentHealth > 0)
             GetComponent<Sucu_mv>().enabled = true;
     }
