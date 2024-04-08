@@ -73,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     return;
                 }
-                print("Space has been pressed");
+                //print("Space has been pressed");
                 Jump();
                 if(isOnWall())
                 {

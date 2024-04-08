@@ -46,7 +46,6 @@ public class Dash : MonoBehaviour
     {
         Physics2D.IgnoreLayerCollision(10, 11, true);
         myRenderer.color = new Color(0,1,0,0.8f);
-        print(Force);
         MyRBody.velocity = Force;
         yield return new WaitForSeconds(0.2f);
         GetComponent<PlayerMovement>().enabled = true;

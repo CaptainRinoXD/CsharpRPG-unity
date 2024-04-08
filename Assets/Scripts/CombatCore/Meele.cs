@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Meele : MonoBehaviour
@@ -10,6 +12,8 @@ public class Meele : MonoBehaviour
     [Header("Player")]
     [SerializeField] GameObject PlayerObject;
     [SerializeField] float damgeGivenToEnemy;
+    [SerializeField] int criticalPercentage;
+    private float DmgIncrase;
 
     [Header("Enemy")]
     [SerializeField] GameObject EnemyObject;
@@ -29,8 +33,18 @@ public class Meele : MonoBehaviour
     {
         if (collision.tag == "Enemy")
         {
-            direction = PlayerObject.transform.localScale.x; //Get the direction where the player hit
-            collision.GetComponent<Health>().TakeDamage(damgeGivenToEnemy); //Damge enemy health
+            collision.GetComponent<Health>().takeCriticalHit(isCriticalHit()); // set the floating text
+            if (isCriticalHit() == true) 
+            {
+                collision.GetComponent<Health>().TakeDamage(DmgIncrase);
+            } //set critial hit
+            else
+            {
+                collision.GetComponent<Health>().TakeDamage(damgeGivenToEnemy); //Damge enemy health
+            }
+
+            direction = PlayerObject.transform.localScale.x; //Get the direction where the player hit to gave knockback
+            
 
             //Slime
             if (collision.GetComponent<SlimeMV>() != null)
@@ -51,9 +65,7 @@ public class Meele : MonoBehaviour
         }
         if (collision.tag == "Player")
         {
-            print("True");
             StartCoroutine(meeleAttackCoolDown(collision));
-
         }
         else if (collision.tag == "DetectionZone" || collision.tag == "InvisibleWall") //ingore out the collsion for dectionZone
         {
@@ -71,5 +83,16 @@ public class Meele : MonoBehaviour
         MyBoxCollider2D.enabled = false;
         yield return new WaitForSeconds(attackCoolDown);
         MyBoxCollider2D.enabled = true;
+    }
+
+    private bool isCriticalHit()
+    {
+        System.Random rnd = new System.Random();
+        int Number = rnd.Next(0,100);
+        if (Number < criticalPercentage)
+        {
+            DmgIncrase = damgeGivenToEnemy + rnd.Next(1,3);
+            return true;
+        } else { return false; }
     }
 }

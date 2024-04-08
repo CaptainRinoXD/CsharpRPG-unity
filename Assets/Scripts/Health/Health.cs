@@ -16,13 +16,16 @@ public class Health : MonoBehaviour
     [SerializeField] private float iFrameDuration;
     [SerializeField] private float numberOfFlash;
 
+    [Header("Floating damage")]
+    [SerializeField] private FloatingText Fl_text;
+    private bool isCritialHit = false;
+
+
     // Start is called before the first frame update
     private void Start() // This method is called every frame
     {
         myAnim = GetComponent<Animator>();
         myRenderer = GetComponent<SpriteRenderer>();
-
-
     }
 
     private void Awake() // This method is only called once when the this script being call
@@ -33,8 +36,12 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(float _damage)
     {
+        if(Fl_text != null) //set Floating dmg text
+        {
+            Fl_text.DisplayFL_text(_damage, isCritialHit);
+        }
+
         currentHealth = Mathf.Clamp(currentHealth - _damage, 0, StartingtHealth);
-        
         if (currentHealth > 0 )
         {
             //Player is being hurt
@@ -74,7 +81,6 @@ public class Health : MonoBehaviour
 
                 StartCoroutine(DeactivateAfterDelay(2f)); // delaying setActive false
             }
-            
         }
     }
 
@@ -94,9 +100,13 @@ public class Health : MonoBehaviour
     }
     private IEnumerator DeactivateAfterDelay(float delay)
     {
-        
         yield return new WaitForSeconds(delay);
         gameObject.SetActive(false);
+    }
+
+    public void takeCriticalHit(bool value)
+    {
+        isCritialHit = value;   
     }
 
     // Update is called once per frame

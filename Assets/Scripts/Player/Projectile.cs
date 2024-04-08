@@ -44,6 +44,7 @@ public class Projectile : MonoBehaviour
         if (collision.tag == "Enemy")
         {
             isHit = true;
+            collision.GetComponent<Health>().takeCriticalHit(false); // set false for crtial hit floating text
             collision.GetComponent<Health>().TakeDamage(damgeGivenToEnemy);
             MyBoxCollider2D.enabled = false;
             myAnimator.SetTrigger("Explosion"); // set trigger for explosion animmation
